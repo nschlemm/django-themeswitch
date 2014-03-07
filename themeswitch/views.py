@@ -1,6 +1,6 @@
+from django.conf import settings
 from django.http import HttpResponseBadRequest, HttpResponseRedirect
 
-from themeswitch import THEMES
 
 
 def switch(request):
@@ -8,7 +8,7 @@ def switch(request):
         return HttpResponseBadRequest('No theme defined')
 
     theme = request.GET.get('theme')
-    if theme and theme not in THEMES:
+    if theme and theme not in settings.THEMESWITCHER_THEMES:
         return HttpResponseBadRequest('Unknown theme: "%s"' % theme)
 
     response = HttpResponseRedirect(
