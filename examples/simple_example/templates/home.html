@@ -20,8 +20,7 @@
     <h1>Pick a Theme!</h1>
     <select onchange="window.document.location.href=this.options[this.selectedIndex].value">
         {% for theme in themes %}
-        <option value="/switch/?theme={{theme}}"
-        {% if selected_theme == theme %}selected{% endif %}>{{ theme }}</option>
+        <option value="/switch/?theme={{theme}}"{% if selected_theme == theme %}selected{% endif %}>{{ theme }}</option>
         {% endfor %}
     </select>
     <p><em>django-bootswatch</em> is a simple way to allow users to style your content to their liking!</p>

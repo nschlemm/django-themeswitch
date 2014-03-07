@@ -98,3 +98,26 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+BOOTSWATCHES = (
+    'amelia',
+    'cerulean',
+    'cosmo',
+    'cyborg',
+    'flatly',
+    'journal',
+    'readable',
+    'simplex',
+    'slate',
+    'spacelab',
+    'united',
+)
+
+BOOTSWATCH_THEMES = dict(
+    (theme, '//netdna.bootstrapcdn.com/bootswatch/3.0.0/%s/bootstrap.min.css' % theme)
+    for theme in BOOTSWATCHES
+)
+
+THEMESWITCHER_THEMES = dict(
+    BOOTSWATCH_THEMES,
+)
