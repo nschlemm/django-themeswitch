@@ -18,13 +18,13 @@ def render_selected_theme_css(context):
             )
     selected_theme = context['selected_theme']
     if selected_theme and selected_theme in THEMES:
-        return u'<link href="%s" rel="stylesheet">' % settings.THEMESWITCHER_THEMES[selected_theme]
+        return u'<link href="%s" rel="stylesheet">' % THEMES[selected_theme]
 
     return u''
 
 
 @register.assignment_tag()
 def get_available_themes():
-    available_themes = settings.THEMESWITCHER_THEMES.keys()
+    available_themes = THEMES.keys()
     available_themes.sort()
     return available_themes
