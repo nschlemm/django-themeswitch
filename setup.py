@@ -11,7 +11,7 @@ setup(
     version='0.1',
     packages=['themeswitch'],
     include_package_data=True,
-    license='BSD License',  # example license
+    license='BSD License',
     description='a django app that allows for easy switch between themes',
     long_description=README,
     url='https://github.com/nschlemm/django-themeswitch',
@@ -21,7 +21,7 @@ setup(
         'Environment :: Web Environment',
         'Framework :: Django',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: BSD License', # example license
+        'License :: OSI Approved :: BSD License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2.6',
