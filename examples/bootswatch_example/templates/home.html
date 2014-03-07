@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load themeswitch_tags %}
+{% get_available_themes as themes %}
+<html>
+<head>
+    <title>A bootswatch example</title>
+    {% render_selected_theme_css %}
+    <style>
+        div#wrapper {
+        margin:auto;
+        padding:2rem;
+        }
+        p {
+        margin-top:2rem;
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <h1>Pick a Theme!</h1>
+    <select onchange="window.document.location.href=this.options[this.selectedIndex].value">
+        <option value="">---</option>
+        {% for theme in themes %}
+        <option value="/switch/?theme={{theme}}"{% if selected_theme == theme %}selected{% endif %}>{{ theme }}</option>
+        {% endfor %}
+    </select>
+    <p><em>django-themeswitch</em> is a simple way to allow users to style your content to their liking!</p>
+</div>
+</body>
+</html>
