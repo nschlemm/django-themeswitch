@@ -4,6 +4,7 @@ from themeswitch import THEMES
 
 register = Library()
 
+
 @register.simple_tag(takes_context=True)
 def render_selected_theme_css(context):
     selected_theme = context['selected_theme']
