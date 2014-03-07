@@ -54,14 +54,15 @@ MIDDLEWARE_CLASSES = (
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.i18n",
-    "django.core.context_processors.media",
-    "django.core.context_processors.request",
-    "django.core.context_processors.static",
-    "django.core.context_processors.tz",
-    "django.contrib.messages.context_processors.messages",
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.request',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.contrib.messages.context_processors.messages',
+
     'themeswitch.context_processors.selected_theme'
 )
 
@@ -99,25 +100,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-BOOTSWATCHES = (
-    'amelia',
-    'cerulean',
-    'cosmo',
-    'cyborg',
-    'flatly',
-    'journal',
-    'readable',
-    'simplex',
-    'slate',
-    'spacelab',
-    'united',
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
 )
 
-BOOTSWATCH_THEMES = dict(
-    (theme, '//netdna.bootstrapcdn.com/bootswatch/3.0.0/%s/bootstrap.min.css' % theme)
-    for theme in BOOTSWATCHES
-)
-
-THEMESWITCHER_THEMES = dict(
-    BOOTSWATCH_THEMES,
-)
+THEMESWITCHER_THEMES = {
+    'red': '/static/simple_example/css/red.css',
+    'green': '/static/simple_example/css/green.css'
+}
