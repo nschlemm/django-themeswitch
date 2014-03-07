@@ -1,8 +1,9 @@
 from django.conf import settings
-
-from themeswitch.settings import THEMES
 from django.core.exceptions import ImproperlyConfigured
 from django.template.base import Library
+
+from themeswitch.settings import THEMES
+
 
 register = Library()
 
