@@ -1,5 +1,5 @@
 """
-Django settings for simple_example project.
+Django settings for bootswatch_example project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -62,13 +62,12 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.static',
     'django.core.context_processors.tz',
     'django.contrib.messages.context_processors.messages',
-
     'themeswitch.context_processors.selected_theme'
 )
 
-ROOT_URLCONF = 'simple_example.urls'
+ROOT_URLCONF = 'bootswatch_example.urls'
 
-WSGI_APPLICATION = 'simple_example.wsgi.application'
+WSGI_APPLICATION = 'bootswatch_example.wsgi.application'
 
 
 # Database
@@ -100,11 +99,34 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+
+def _get_bootswatch_css_url(theme, bootstrap_version='3.0.0'):
+    """
+    A helper function to generate CDN URLs for bootswatch themes.
+    """
+    css_url = '//netdna.bootstrapcdn.com/bootswatch/%s/%s/bootstrap.min.css'
+    return css_url % (bootstrap_version, theme)
+
+
+BOOTSWATCHES = (
+    'amelia',
+    'cerulean',
+    'cosmo',
+    'cyborg',
+    'flatly',
+    'journal',
+    'readable',
+    'simplex',
+    'slate',
+    'spacelab',
+    'united',
 )
 
-THEMESWITCHER_THEMES = {
-    'red': '/static/simple_example/css/red.css',
-    'green': '/static/simple_example/css/green.css'
-}
+BOOTSWATCH_THEMES = dict(
+    (theme, '//netdna.bootstrapcdn.com/bootswatch/3.0.0/%s/bootstrap.min.css' % theme)
+    for theme in BOOTSWATCHES
+)
+
+THEMESWITCHER_THEMES = dict(
+    BOOTSWATCH_THEMES,
+)

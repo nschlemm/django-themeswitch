@@ -1,6 +1,6 @@
 from django.http import HttpResponseBadRequest, HttpResponseRedirect
 
-from themeswitch import THEMES
+from .settings import THEMES
 
 
 def switch(request):
@@ -12,7 +12,7 @@ def switch(request):
         return HttpResponseBadRequest('Unknown theme: "%s"' % theme)
 
     response = HttpResponseRedirect(
-        request.GET.get('next', request.META.get('HTTP_REFERER', '/'),))
+        request.GET.get('next', request.META.get('HTTP_REFERER', '/'), ))
     if theme:
         response.set_cookie('selected_theme', theme)
     else:

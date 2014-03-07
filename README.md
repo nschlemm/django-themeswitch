@@ -14,7 +14,18 @@ Then add an entry in your `urls.py` to include `themeswitch.urls`.
 In your templates after you `{% load themeswitch_tags %}` you have access to the template tags `{% get_available_themes as VARIABLENAME %}`
 and `{% render_selected_theme_css %}`. Place the `{% render_selected_theme_css %}` somewhere in your template's `<head>`.
 
-Check out the examples subdirectory for a very simple project that shows how to use _django-themeswitch_.
+Now add an entry `THEMESWITCHER_THEMES` to your `settings.py`. `THEMESWITCHER_THEMES` should be a dictionary that contains mappings of `<theme_name>: <URL>`.
+The URLs must be absolute, but can exclude the host. Example:
+
+```python
+THEMESWITCHER_THEMES = {
+    'green': '/static/green.css'
+}
+```
+
+This would make `get_available_themes` return just one theme, named 'green'.
+
+Check out the [examples subdirectory](https://github.com/nschlemm/django-themeswitch/tree/master/examples).
 
 # License
 

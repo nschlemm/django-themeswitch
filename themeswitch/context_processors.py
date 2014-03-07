@@ -1,4 +1,4 @@
-from themeswitch import THEMES
+from .settings import THEMES
 
 
 def selected_theme(request):

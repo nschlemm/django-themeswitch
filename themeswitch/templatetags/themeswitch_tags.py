@@ -2,7 +2,8 @@ from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 from django.template.base import Library
 
-from themeswitch import THEMES
+from themeswitch.settings import THEMES
+
 
 register = Library()
 
@@ -13,7 +14,7 @@ def render_selected_theme_css(context):
         context_processor = 'themeswitch.context_processors.selected_theme'
         if context_processor not in settings.TEMPLATE_CONTEXT_PROCESSORS:
             raise ImproperlyConfigured(
-                'add %s to TEMPLATE_CONTEXT_PROCESSORS' % context_processor
+                'Add %s to TEMPLATE_CONTEXT_PROCESSORS' % context_processor
             )
     selected_theme = context['selected_theme']
     if selected_theme and selected_theme in THEMES:
