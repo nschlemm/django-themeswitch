@@ -11,6 +11,7 @@ BOOTSWATCHES = (
     'spacelab',
     'united',
 )
+
 BOOTSWATCH_THEMES = dict(
     (theme, '//netdna.bootstrapcdn.com/bootswatch/3.0.0/%s/bootstrap.min.css' % theme)
     for theme in BOOTSWATCHES
