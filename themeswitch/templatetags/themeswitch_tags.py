@@ -1,4 +1,6 @@
 from django.conf import settings
+
+from themeswitch.settings import THEMES
 from django.core.exceptions import ImproperlyConfigured
 from django.template.base import Library
 
@@ -14,7 +16,7 @@ def render_selected_theme_css(context):
                 'Add %s to TEMPLATE_CONTEXT_PROCESSORS' % context_processor
             )
     selected_theme = context['selected_theme']
-    if selected_theme and selected_theme in settings.THEMESWITCHER_THEMES:
+    if selected_theme and selected_theme in THEMES:
         return u'<link href="%s" rel="stylesheet">' % settings.THEMESWITCHER_THEMES[selected_theme]
 
     return u''
@@ -22,8 +24,6 @@ def render_selected_theme_css(context):
 
 @register.assignment_tag()
 def get_available_themes():
-    if 'THEMESWITCHER_THEMES' not in settings:
-        raise ImproperlyConfigured('Please add themes via settings.THEMESWITCHER_THEMES')
     available_themes = settings.THEMESWITCHER_THEMES.keys()
     available_themes.sort()
     return available_themes
