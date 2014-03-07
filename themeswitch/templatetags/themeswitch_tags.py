@@ -11,7 +11,7 @@ def render_selected_theme_css(context):
         context_processor = 'themeswitch.context_processors.selected_theme'
         if context_processor not in settings.TEMPLATE_CONTEXT_PROCESSORS:
             raise ImproperlyConfigured(
-                'add %s to TEMPLATE_CONTEXT_PROCESSORS' % context_processor
+                'Add %s to TEMPLATE_CONTEXT_PROCESSORS' % context_processor
             )
     selected_theme = context['selected_theme']
     if selected_theme and selected_theme in settings.THEMESWITCHER_THEMES:
@@ -22,6 +22,8 @@ def render_selected_theme_css(context):
 
 @register.assignment_tag()
 def get_available_themes():
+    if 'THEMESWITCHER_THEMES' not in settings:
+        raise ImproperlyConfigured('Please add themes via settings.THEMESWITCHER_THEMES')
     available_themes = settings.THEMESWITCHER_THEMES.keys()
     available_themes.sort()
     return available_themes
