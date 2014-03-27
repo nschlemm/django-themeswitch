@@ -10,7 +10,7 @@ register = Library()
 
 @register.simple_tag(takes_context=True)
 def render_selected_theme_css(context):
-    if not 'selected_theme' in context:
+    if 'selected_theme' not in context:
         context_processor = 'themeswitch.context_processors.selected_theme'
         if context_processor not in settings.TEMPLATE_CONTEXT_PROCESSORS:
             raise ImproperlyConfigured(

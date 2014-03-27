@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 """
-Useful tool to run the test suite for rest_framework and generate a coverage report.
+Useful tool to run the test suite for rest_framework and generate a coverage
+report.
 """
 
 # http://ericholscher.com/blog/2009/jun/29/enable-setuppy-test-your-django-apps/
@@ -33,7 +34,8 @@ def main():
         # and did not support the 'failfast' option.
         import warnings
         warnings.warn(
-            'Function-based test runners are deprecated. Test runners should be classes with a run_tests() method.',
+            'Function-based test runners are deprecated. Test runners should '
+            'be classes with a run_tests() method.',
             DeprecationWarning
         )
         failures = TestRunner(['tests'])
@@ -53,9 +55,10 @@ def main():
         if os.path.basename(path) in ['tests', 'runtests', 'migrations']:
             continue
 
-        # Drop the compat and six modules from coverage, since we're not interested in the coverage
-        # of modules which are specifically for resolving environment dependant imports.
-        # (Because we'll end up getting different coverage reports for it for each environment)
+        # Drop the compat and six modules from coverage, since we're not
+        # interested in the coverage of modules which are specifically for
+        # resolving environment dependant imports. (Because we'll end up
+        # getting different coverage reports for it for each environment)
         if 'compat.py' in files:
             files.remove('compat.py')
 
@@ -68,7 +71,8 @@ def main():
         if 'themeswitch_tags.py' in files:
             files.remove('themeswitch_tags.py')
 
-        cov_files.extend([os.path.join(path, file) for file in files if file.endswith('.py')])
+        cov_files.extend([os.path.join(path, file)
+                          for file in files if file.endswith('.py')])
 
     cov.report(cov_files)
     if '--html' in sys.argv:

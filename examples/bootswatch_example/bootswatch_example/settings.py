@@ -100,7 +100,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-def _get_bootswatch_css_url(theme, bootstrap_version='3.0.0'):
+def _get_bootswatch_css_url(theme, bootstrap_version='3.1.1'):
     """
     A helper function to generate CDN URLs for bootswatch themes.
     """
@@ -113,17 +113,22 @@ BOOTSWATCHES = (
     'cerulean',
     'cosmo',
     'cyborg',
+    'darkly',
     'flatly',
     'journal',
+    'lumen',
     'readable',
+    'shamrock',
     'simplex',
     'slate',
     'spacelab',
+    'superhero',
     'united',
+    'yeti',
 )
 
 BOOTSWATCH_THEMES = dict(
-    (theme, '//netdna.bootstrapcdn.com/bootswatch/3.0.0/%s/bootstrap.min.css' % theme)
+    (theme, _get_bootswatch_css_url(theme))
     for theme in BOOTSWATCHES
 )
 
