@@ -7,7 +7,7 @@ Replace this with more appropriate tests for your application.
 
 from django.test import TestCase
 from django.test.client import RequestFactory
-from themeswitch import THEMES
+from themeswitch.settings import THEMES
 from themeswitch.context_processors import selected_theme
 
 
@@ -28,11 +28,10 @@ class ContextProcessorTest(TestCase):
         request = self.factory.get('/')
         ctx = selected_theme(request)
         self.assertIn('selected_theme', ctx)
-        self.assertDictEqual(dict(selected_theme=None), ctx)
+        self.assertDictEqual(dict(selected_theme='foo'), ctx)
 
-        # FIXME: currently depends on bootswatch themes ...
-        self.assertIn('amelia', THEMES)
-        self.factory.cookies['selected_theme'] = 'amelia'
+        self.assertIn('bar', THEMES)
+        self.factory.cookies['selected_theme'] = 'bar'
         request = self.factory.get('/')
         ctx = selected_theme(request)
-        self.assertDictEqual(dict(selected_theme='amelia'), ctx)
+        self.assertDictEqual(dict(selected_theme='bar'), ctx)

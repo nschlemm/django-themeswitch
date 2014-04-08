@@ -78,6 +78,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+THEMESWITCHER_DEFAULT_THEME = 'foo'
+THEMESWITCHER_THEMES = dict(foo='foo.css', bar='bar.css')
+
 
 # If we're running on the Jenkins server we want to archive the coverage
 # reports as XML.
