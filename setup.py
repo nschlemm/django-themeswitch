@@ -29,7 +29,7 @@ def get_package_data(package):
     return {package: filepaths}
 
 
-version = '0.3'
+version = '0.3.1'
 
 README = open(os.path.join(os.path.dirname(__file__), 'README.md')).read()
 
